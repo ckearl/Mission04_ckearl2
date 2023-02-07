@@ -37,6 +37,6 @@
     } else {
         letterGrade = 'E';
     }
-    output = "You would get a(n) " + letterGrade + " in the class."
-    $('#calc-result').text(output)
+    alert("You would get a(n) " + letterGrade + " in the class.");
+    // $('#calc-result').text(output)
 })
