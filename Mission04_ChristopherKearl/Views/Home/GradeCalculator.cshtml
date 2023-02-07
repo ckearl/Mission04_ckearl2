@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
+@model Mission04_ChristopherKearl.Models.Grade
 
 @{
     ViewData["NavBarTag"] = "Grade Calculator";
@@ -10,57 +10,71 @@
 <div class="card grade-calculator">
     <h5 class="pt-3">Want to calculate your potential grade in IS 413?</h5>
 
-    <form class="row g-3 needs-validation p-3">
+    @using (Html.BeginForm())
+    {
 
-        <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">Assignments</label>
-            <input type="number" class="form-control" id="validationCustom01" required>
-            <div class="valid-feedback">
-                Please enter your Assignments numeric grade
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Group Project</label>
-            <input type="number" class="form-control" id="validationCustom02" required>
-            <div class="valid-feedback">
-                Please enter your Group Project numeric grade
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom03" class="form-label">Quizzes</label>
-            <div class="input-group has-validation">
-                <input type="number" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                    Please enter your Quizzes numeric grade
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom04" class="form-label">Midterm Exam</label>
-            <input type="number" class="form-control" id="validationCustom04" required>
-            <div class="invalid-feedback">
-                Please enter your Midterm Exam numeric grade
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom05" class="form-label">Final Exam</label>
-            <input type="number" class="form-control" id="validationCustom05" required>
-            <div class="invalid-feedback">
-                Please enter your Final Exam numeric grade
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom06" class="form-label">INTEX</label>
-            <input type="number" class="form-control" id="validationCustom06" required>
-            <div class="invalid-feedback">
-                Please enter your INTEX numeric grade
-            </div>
-        </div>
-        <div id="grade-calc-submit" class="col-12">
-            <button class="btn btn-primary" type="button" value="submit">Generate Grade</button>
-        </div>
+        @Html.AntiForgeryToken()
 
-    </form>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.GradeID)
+<div class="col-md-4">
+    @Html.LabelFor(model => model.Assignments, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.Assignments, new { htmlAttributes = new { @class = "form-control", id = "validationCustom01" } })
+    @Html.ValidationMessageFor(model => model.Assignments, "", new { @class = "text-danger" })
+    <div class="valid-feedback">
+        Please enter your Assignments numeric grade
+    </div>
+</div>
+<div class="col-md-4">
+    @Html.LabelFor(model => model.GroupProject, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.GroupProject, new { htmlAttributes = new { @class = "form-control", id = "validationCustom02", type ="number" } })
+    @Html.ValidationMessageFor(model => model.GroupProject, "", new { @class = "text-danger" })
+    <div class="valid-feedback">
+        Please enter your Group Project numeric grade
+    </div>
+</div>
+<div class="col-md-4">
+    @Html.LabelFor(model => model.Quizzes, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.Quizzes, new { htmlAttributes = new { @class = "form-control", id = "validationCustom03" } })
+    @Html.ValidationMessageFor(model => model.Quizzes, "", new { @class = "text-danger" })
+    <div class="input-group has-validation">
+        <div class="invalid-feedback">
+            Please enter your Quizzes numeric grade
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    @Html.LabelFor(model => model.MidtermExam, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.MidtermExam, new { htmlAttributes = new { @class = "form-control", id = "validationCustom04" } })
+    @Html.ValidationMessageFor(model => model.MidtermExam, "", new { @class = "text-danger" })
+    <div class="invalid-feedback">
+        Please enter your Midterm Exam numeric grade
+    </div>
+</div>
+<div class="col-md-4">
+    @Html.LabelFor(model => model.FinalExam, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.FinalExam, new { htmlAttributes = new { @class = "form-control", id = "validationCustom05" } })
+    @Html.ValidationMessageFor(model => model.FinalExam, "", new { @class = "text-danger" })
+    <div class="invalid-feedback">
+        Please enter your Final Exam numeric grade
+    </div>
+</div>
+<div class="col-md-4">
+    @Html.LabelFor(model => model.Intex, htmlAttributes: new { @class = "form-label" })
+    @Html.EditorFor(model => model.Intex, new { htmlAttributes = new { @class = "form-control", id = "validationCustom06" } })
+    @Html.ValidationMessageFor(model => model.Intex, "", new { @class = "text-danger" })
+    
+    <div class="invalid-feedback">
+        Please enter your INTEX numeric grade
+    </div>
+</div>
+    
+    <div id="grade-calc-submit" class="col-12">
+        <input class="btn btn-primary" type="submit" value="Generate Grade"/>
+
+    </div>
+
+    }
 
 
 </div>

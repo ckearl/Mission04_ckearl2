@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mission04_ChristopherKearl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,16 @@ namespace Mission04_ChristopherKearl.Controllers
             return View();
         }
 
-        public IActionResult GradeCalculator(string message)
+        [HttpGet]
+        public IActionResult GradeCalculator()
         {
             return View();
         }
 
         [HttpPost]
-        public ViewResult CalculateGrate(string message)
+        public IActionResult GradeCalculator(Grade g)
         {
-
-            return View(GradeCalculator(message));
+            return View();
         }
     }
 }
